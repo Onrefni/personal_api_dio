@@ -16,7 +16,7 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public Person createPerson(@RequestBody Person person){
+    public Person createPerson(@RequestBody Person person) {
         return personRepository.save(person);
 
     }

@@ -25,7 +25,7 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO getBook(@RequestBody Person person){
+    public MessageResponseDTO getBook(@RequestBody Person person) {
         Person message = personService.createPerson(person);
         return MessageResponseDTO.builder().message("Created Person with ID " + person.getId()).build();
     }
