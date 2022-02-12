@@ -21,7 +21,7 @@ public class Phone {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    public PhoneType type;
+    public PhoneType phoneType;
 
     @Column(nullable = false)
     public String number;
