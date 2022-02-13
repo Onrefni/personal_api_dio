@@ -31,7 +31,7 @@ public class Person {
     private String cpf;
 
     @Column(nullable = true)
-    private LocalDate barthDate;
+    private LocalDate birthDate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Phone> phones;

@@ -12,13 +12,13 @@ public interface PersonMapper {
 
     PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
 
-    @Mapping(target = "barthDate", source = "barthDate", dateFormat = "dd-MM-yyyy")
+    @Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy")
     Person toModel(PersonDTO personDTO);
 
     PersonDTO toDTO(Person person);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "barthDate", source = "barthDate", dateFormat = "dd-MM-yyyy")
+    @Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy")
     void updatePersonFromDto(PersonDTO personDTO, @MappingTarget Person person);
 
 }
