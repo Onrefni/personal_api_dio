@@ -4,6 +4,7 @@ import one.digitalinnovation.personapi.dto.requestDTO.PersonDTO;
 import one.digitalinnovation.personapi.entity.Person;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
@@ -15,4 +16,9 @@ public interface PersonMapper {
     Person toModel(PersonDTO personDTO);
 
     PersonDTO toDTO(Person person);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "barthDate", source = "barthDate", dateFormat = "dd-MM-yyyy")
+    void updatePersonFromDto(PersonDTO personDTO, @MappingTarget Person person);
+
 }
