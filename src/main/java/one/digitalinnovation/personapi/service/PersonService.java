@@ -29,8 +29,7 @@ public class PersonService {
 
         Person person = personRepository.save(personMapper.toModel(personDTO));
 
-        return MessageResponseDTO.builder()
-                .message("Created Person with ID " + person.getId()).build();
+        return createMessageResponse("Created Person with ID ", person);
 
     }
 
@@ -51,9 +50,23 @@ public class PersonService {
         personRepository.deleteById(id);
     }
 
+    public MessageResponseDTO updateById(Long id, PersonDTO personDTO) throws PersonNotFoudException {
+        Person personVerifier = verifyIfExists(id);
+        personMapper.updatePersonFromDto(personDTO, personVerifier);
+        Person person = personRepository.save(personVerifier);
+
+        return createMessageResponse("Updated Person with ID ", person);
+    }
+
+    private MessageResponseDTO createMessageResponse(String message, Person person) {
+        return MessageResponseDTO.builder()
+                .message(message + person.getId()).build();
+    }
+
     private Person verifyIfExists(Long id) throws PersonNotFoudException {
         Person person = personRepository.findById(id)
                 .orElseThrow(() -> new PersonNotFoudException(id));
         return person;
     }
+
 }
